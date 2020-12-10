@@ -1,0 +1,26 @@
+{
+  "name": "sunlapse",
+  "version": "1.0.0",
+  "description": "Every day sunrise and sunset",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuiGee3471/Sunlapse.git"
+  },
+  "author": "LuiGee3471",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuiGee3471/Sunlapse/issues"
+  },
+  "homepage": "https://github.com/LuiGee3471/Sunlapse#readme",
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "moment": "^2.29.1",
+    "node-schedule": "^1.3.2"
+  }
+}
