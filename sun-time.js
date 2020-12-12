@@ -24,9 +24,12 @@ export default async function () {
 
   const duration = moment.duration(sunriseTime.diff(sunsetTime));
 
+  const testTime = moment().add(3, 'second');
+
   return {
-    sunrise: getScheduleObj(sunriseTime),
-    duration: duration.asSeconds(),
+    sunriseTime: getScheduleObj(sunriseTime),
+    durationAsSeconds: duration.asSeconds(),
+    testTime: getScheduleObj(testTime)
   };
 }
 
