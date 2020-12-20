@@ -7,8 +7,8 @@ import moment from "moment";
 import getSunTime from "./sunTime.js";
 
 
-export default async () => {
-  const { sunriseTime, durationAsSeconds, testTime } = await getSunTime();
+export default (sunTime) => {
+  const { sunriseTime, durationAsSeconds } = sunTime;
 
   //raspistill --width 1920 --height 1080 --timeout 10000 --timelapse 1000 --output image%09d.jpg
 
