@@ -4,7 +4,7 @@ import moment from "moment";
 const latitude = 37.561468;
 const longitude = 127.040485;
 
-export default async function () {
+export default async () => {
   const url = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}`;
   const response = await axios.get(url);
 
@@ -27,7 +27,7 @@ export default async function () {
   const testTime = moment().add(3, 'second');
 
   return {
-    sunriseTime: getScheduleObj(sunriseTime),
+    sunriseTime: sunriseTime,
     durationAsSeconds: duration.asSeconds(),
     testTime: getScheduleObj(testTime)
   };
