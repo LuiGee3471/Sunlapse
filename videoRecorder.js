@@ -21,6 +21,7 @@ export default (sunTime) => {
       '--height', 1080,
       '--timeout', durationAsSeconds * 1000,
       '--timelapse', 1 * 1000,
+      '--awb', 'fluorescent',
       '--output', `${directoryName}/image%06d.jpg`
     ]);
     console.log('Capture end');
