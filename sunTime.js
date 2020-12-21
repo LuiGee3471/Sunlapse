@@ -20,7 +20,6 @@ export default async () => {
     response.data.results.astronomical_twilight_end,
     "hh:mm:ss a"
   )
-    .subtract(1, 'day')
     .add(8, "hour")
     .add(5, "minute");
 
