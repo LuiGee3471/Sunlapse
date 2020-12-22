@@ -1,13 +1,9 @@
 import moment from 'moment';
 
-import videoScheduler from './videoRecorder.js';
+import getSunTime from './sunTime.js';
+import videoRecorder from './videoRecorder.js';
 
-(async function (sunTime) {
-    videoScheduler(sunTime);
-})({
-    sunriseTime: getScheduleObj(moment().add(3, 'second')),
-    durationAsSeconds: 60
-});
+testSunTime();
 
 function getScheduleObj(time) {
     return {
@@ -18,4 +14,15 @@ function getScheduleObj(time) {
       minute: time.minute(),
       second: time.second(),
     };
-  }
+}
+
+async function testSunTime() {
+    await getSunTime();
+}
+
+async function testVideoRecorder() {
+    videoRecorder({
+        sunriseTime: getScheduleObj(moment().add(2, 'second')),
+        durationAsMilliSeconds: 60000
+    })
+}

@@ -23,14 +23,15 @@ export default async () => {
     .add(8, "hour")
     .add(5, "minute");
 
-  const duration = moment.duration(sunriseTime.diff(sunsetTime));
+  const duration = moment.duration(sunsetTime.diff(sunriseTime));
 
   console.log('Sunrise: ' + sunriseTime.format('YYYY-MM-DD HH:mm:ss'));
   console.log('Sunset: ' + sunsetTime.format('YYYY-MM-DD HH:mm:ss'));
+  console.log('Duration: ' + duration.asHours() + " hours");
 
   return {
     sunriseTime: getScheduleObj(sunriseTime),
-    durationAsSeconds: duration.asSeconds(),
+    durationAsMilliSeconds: duration.asMilliseconds(),
   };
 }
 
