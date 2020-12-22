@@ -23,6 +23,6 @@ async function testSunTime() {
 async function testVideoRecorder() {
     videoRecorder({
         sunriseTime: getScheduleObj(moment().add(5, 'second')),
-        durationAsMilliSeconds: 60000
+        durationAsMilliseconds: 60000
     })
 }
