@@ -31,7 +31,7 @@ export default async () => {
 
   return {
     sunriseTime: getScheduleObj(sunriseTime),
-    durationAsMilliSeconds: duration.asMilliseconds(),
+    durationAsMilliseconds: duration.asMilliseconds(),
   };
 }
 
