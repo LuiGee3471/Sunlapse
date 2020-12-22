@@ -12,6 +12,7 @@ export default (sunTime) => {
     console.log('Capture start');
     const today = moment().format('YYYY-MM-DD');
     fs.mkdirSync(today);
+    console.log(`raspistill --width 1920 --height 1080 --timeout ${durationAsMilliseconds}, --timelapse ${1 * 1000} --awb off --awbgains 1.1,1.5, --output ${today}/image%06d.jpg`);
     cp.spawnSync('raspistill', [
       '--width', 1920,
       '--height', 1080,

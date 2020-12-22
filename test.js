@@ -3,7 +3,7 @@ import moment from 'moment';
 import getSunTime from './sunTime.js';
 import videoRecorder from './videoRecorder.js';
 
-testSunTime();
+testVideoRecorder();
 
 function getScheduleObj(time) {
     return {
@@ -22,7 +22,7 @@ async function testSunTime() {
 
 async function testVideoRecorder() {
     videoRecorder({
-        sunriseTime: getScheduleObj(moment().add(2, 'second')),
+        sunriseTime: getScheduleObj(moment().add(5, 'second')),
         durationAsMilliSeconds: 60000
     })
 }
