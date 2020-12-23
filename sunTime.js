@@ -9,7 +9,7 @@ export default async () => {
   const response = await axios.get(url);
 
   const sunriseTime = moment(
-    response.data.results.astronomical_twilight_begin,
+    response.data.results.nautical_twilight_begin,
     "hh:mm:ss a"
   )
     .subtract(1, 'day')
@@ -17,7 +17,7 @@ export default async () => {
     .subtract(5, "minute");
 
   const sunsetTime = moment(
-    response.data.results.astronomical_twilight_end,
+    response.data.results.nautical_twilight_end,
     "hh:mm:ss a"
   )
     .add(8, "hour")
@@ -31,7 +31,7 @@ export default async () => {
 
   return {
     sunriseTime: getScheduleObj(sunriseTime),
-    durationAsMilliseconds: duration.asMilliseconds(),
+    duration,
   };
 }
 

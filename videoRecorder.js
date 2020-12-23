@@ -5,19 +5,21 @@ import schedule from "node-schedule";
 import moment from "moment";
 
 export default (sunTime) => {
-  const { sunriseTime, durationAsMilliseconds } = sunTime;
+  const { sunriseTime, duration } = sunTime;
+  const height = 720; // 720p
+  const width = height * 16 / 9;
 
   //raspistill --width 1920 --height 1080 --timeout 10000 --timelapse 1000 --output image%09d.jpg
   schedule.scheduleJob(sunriseTime, () => {
     console.log('Capture start');
     const today = moment().format('YYYY-MM-DD');
     fs.mkdirSync(today);
-    console.log(`raspistill --width 1920 --height 1080 --timeout ${durationAsMilliseconds}, --timelapse ${1 * 1000} --awb off --awbgains 1.1,1.5, --output ${today}/image%06d.jpg`);
+    console.log(`raspistill --width ${width} --height ${height} --timeout ${duration.asMilliseconds()} --timelapse ${duration.asHours().toFixed(3) * 1000} --awb off --awbgains 1.1,1.5, --output ${today}/image%06d.jpg`);
     cp.spawnSync('raspistill', [
-      '--width', 1920,
-      '--height', 1080,
-      '--timeout', durationAsMilliseconds,
-      '--timelapse', 1 * 1000,
+      '--width', width,
+      '--height', height,
+      '--timeout', duration.asMilliseconds(),
+      '--timelapse', duration.asHours().toFixed(3) * 1000,
       '--awb', 'off',
       '--awbgains', '1.1,1.5',
       '--output', `${today}/image%06d.jpg`
@@ -26,10 +28,10 @@ export default (sunTime) => {
 
     console.log('Timelapse on');
     cp.spawnSync('ffmpeg', [
-      '-r', 60,
+      '-framerate', 60,
       '-i', `${today}/image%06d.jpg`,
-      '-r', 60,
       '-c:v', 'libx264',
+      '-pix_fmt', 'yuv420p'
       `timelapse-${today}.mp4`
     ]);
     console.log('Timelapse end');
