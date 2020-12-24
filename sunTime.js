@@ -9,19 +9,17 @@ export default async () => {
   const response = await axios.get(url);
 
   const sunriseTime = moment(
-    response.data.results.nautical_twilight_begin,
+    response.data.results.astronomical_twilight_begin,
     "hh:mm:ss a"
   )
     .subtract(1, 'day')
-    .add(8, "hour")
-    .subtract(5, "minute");
+    .add(8, "hour");
 
   const sunsetTime = moment(
-    response.data.results.nautical_twilight_end,
+    response.data.results.astronomical_twilight_end,
     "hh:mm:ss a"
   )
-    .add(8, "hour")
-    .add(5, "minute");
+    .add(8, "hour");
 
   const duration = moment.duration(sunsetTime.diff(sunriseTime));
 
