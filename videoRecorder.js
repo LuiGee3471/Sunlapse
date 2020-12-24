@@ -31,7 +31,7 @@ export default (sunTime) => {
       '-framerate', 60,
       '-i', `${today}/image%06d.jpg`,
       '-c:v', 'libx264',
-      '-pix_fmt', 'yuv420p'
+      '-pix_fmt', 'yuv420p',
       `timelapse-${today}.mp4`
     ]);
     console.log('Timelapse end');
