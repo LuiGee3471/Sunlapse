@@ -9,7 +9,7 @@ export default async () => {
   const response = await axios.get(url);
 
   const sunriseTime = moment(
-    response.data.results.astronomical_twilight_begin,
+    response.data.results.nautical_twilight_begin,
     "hh:mm:ss a"
   )
     .subtract(1, 'day')
