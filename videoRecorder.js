@@ -19,18 +19,19 @@ export default (sunTime) => {
       '--width', width,
       '--height', height,
       '--timeout', duration.asMilliseconds(),
-      '--timelapse', duration.asHours().toFixed(3) * 1000,
+      '--timelapse', duration.asHours().toFixed(3) * 1000 * 3, // 20초
       '--awb', 'off',
-      '--awbgains', '1.1,1.5',
-      '--output', `${today}/image%06d.jpg`
+      '--awbgains', '1.0,1.4',
+      '--output', `${today}/image%04d.jpg`
     ]);
     console.log('Capture end');
 
     console.log('Timelapse on');
     cp.spawnSync('ffmpeg', [
       '-framerate', 60,
-      '-i', `${today}/image%06d.jpg`,
-      '-c:v', 'libx264',
+      '-i', `${today}/image%04d.jpg`,
+      '-c:v', 'h264_omx',
+      '-b:v', '1.3M',
       '-pix_fmt', 'yuv420p',
       `timelapse-${today}.mp4`
     ]);

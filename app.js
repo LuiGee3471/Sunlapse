@@ -5,6 +5,10 @@ import videoScheduler from "./videoRecorder.js";
 
 console.log('Start app');
 schedule.scheduleJob('0 0 4 * * *', async () => {
-    const sunTime = await getSunTime();
-    videoScheduler(sunTime);
+    try {
+        const sunTime = await getSunTime();
+        videoScheduler(sunTime);
+    } catch (error) {
+        console.error(error);
+    }
 });
