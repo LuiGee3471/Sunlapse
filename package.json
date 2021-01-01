@@ -4,7 +4,7 @@
   "description": "Every day sunrise and sunset",
   "main": "app.js",
   "scripts": {
-    "start": "node sunlapse.js >> sunlapse.log 2>&1 &",
+    "start": "node sunlapse.js 1>> /var/log/sunlapse/sunlapse.log 2>> /var/log/sunlapse/sunlapse.err &",
     "test": "node test.js"
   },
   "repository": {

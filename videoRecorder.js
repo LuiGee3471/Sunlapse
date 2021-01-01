@@ -6,7 +6,7 @@ import moment from "moment";
 
 export default (sunTime) => {
   const { sunriseTime, duration } = sunTime;
-  const height = 720; // 720p
+  const height = 1080; // 1080p
   const width = height * 16 / 9;
 
   //raspistill --width 1920 --height 1080 --timeout 10000 --timelapse 1000 --output image%09d.jpg
@@ -33,7 +33,7 @@ export default (sunTime) => {
       '-c:v', 'h264_omx',
       '-b:v', '1.3M',
       '-pix_fmt', 'yuv420p',
-      `timelapse-${today}.mp4`
+      `/var/opt/sunlapse/timelapse-${today}.mp4`
     ]);
     console.log('Timelapse end');
 

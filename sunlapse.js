@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import schedule from 'node-schedule';
 
 import getSunTime from './sunTime.js';
