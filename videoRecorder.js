@@ -6,7 +6,7 @@ import moment from "moment";
 
 export default (sunTime) => {
   const { sunriseTime, duration } = sunTime;
-  const height = 720; // 720p
+  const height = 480; // 480p
   const width = height * 16 / 9;
 
   //raspistill --width 1280 --height 720 --timeout 10000 --timelapse 1000 --output image%09d.jpg
