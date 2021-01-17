@@ -6,10 +6,10 @@ import moment from "moment";
 
 export default (sunTime) => {
   const { sunriseTime, duration } = sunTime;
-  const height = 1080; // 1080p
+  const height = 720; // 720p
   const width = height * 16 / 9;
 
-  //raspistill --width 1920 --height 1080 --timeout 10000 --timelapse 1000 --output image%09d.jpg
+  //raspistill --width 1280 --height 720 --timeout 10000 --timelapse 1000 --output image%09d.jpg
   schedule.scheduleJob(sunriseTime, () => {
     console.log('Capture start');
     const today = moment().format('YYYY-MM-DD');
@@ -27,6 +27,7 @@ export default (sunTime) => {
     console.log('Capture end');
 
     console.log('Timelapse on');
+    // ffmpeg -framerate 60 -i 2021-01-17/image%04d.jpg -c:v h264_omx -b:v 1.3M -pix_fmt yuv420p /var/opt/sunlapse/timelapse-2021-01-17.mp4
     cp.spawnSync('ffmpeg', [
       '-framerate', 60,
       '-i', `${today}/image%04d.jpg`,
